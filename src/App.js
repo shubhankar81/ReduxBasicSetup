@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import { setUserDetail, submitUserDetail } from "./Action/userAction"
 
-function App() {
+const App = ({ setUserDetail,submitUserDetail }) => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <table>
+          <tr>
+            <td>Name : </td>
+            <td>
+              <input name="username" onChange={(e) => setUserDetail(e.target.name, e.target.value)}></input>
+            </td></tr>
+          <tr>
+            <td>Age : </td>
+            <td>
+              <input name="age" onChange={(e) => setUserDetail(e.target.name, e.target.value)}></input>
+            </td></tr>
+          <tr>
+            <td>Email : </td>
+            <td>
+              <input name="email" onChange={(e) => setUserDetail(e.target.name, e.target.value)}></input>
+            </td></tr>
+          <tr>
+            <td>Designation : </td>
+            <td>
+              <input name="designation" onChange={(e) => setUserDetail(e.target.name, e.target.value)}></input>
+            </td></tr>
+          <tr><td></td><td><button onClick={(e)=> submitUserDetail()} > Submit </button></td></tr>
+        </table>
+
+      
     </div>
   );
 }
 
-export default App;
+export default connect(null, { setUserDetail, submitUserDetail })(App);
